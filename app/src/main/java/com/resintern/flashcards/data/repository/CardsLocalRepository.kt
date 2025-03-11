@@ -88,8 +88,9 @@ class CardsLocalRepository private constructor() {
     }
 
     fun deleteFlashcard(flashcard: FlashCard) {
-        cards.remove(flashcard)
-        _events.value = Event.Success(cards.toList())
+        val updatedCards = cards.toMutableList()
+        updatedCards.remove(flashcard)
+        _events.value = Event.Success(updatedCards)
     }
 
     companion object {
